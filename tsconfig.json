@@ -1,0 +1,32 @@
+{
+  "compilerOptions": {
+    "outDir": "build/dist",
+    "target": "es6",
+    "module": "commonjs",
+    "moduleResolution": "node",
+    "lib": ["es6", "dom"],
+    "sourceMap": true,
+    "allowJs": true,
+    "noResolve": false, 
+    "removeComments": true, 
+    "jsx": "react", 
+    "rootDir": "src",
+    "baseUrl": "/",
+    "forceConsistentCasingInFileNames": true,
+    "noImplicitReturns": true,
+    "noImplicitThis": true,
+    "noImplicitAny": false,
+    "strictNullChecks": true,
+    "suppressImplicitAnyIndexErrors": true,
+    "noUnusedLocals": true 
+  },
+  "exclude": [
+    "./node_modules/**/*",
+    "build",
+    "scripts",
+    "acceptance-tests",
+    "webpack",
+    "jest",
+    "src/setupTests.ts"
+  ]
+}
