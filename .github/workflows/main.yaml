@@ -1,0 +1,30 @@
+name: Deploy to Production
+
+on:
+  push:
+    branches: [ main, master ]
+
+jobs:
+  deploy:
+    runs-on: self-hosted
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        
+      - name: Set up environment
+        run: |
+          echo "TUNNEL_TOKEN=${{ secrets.TUNNEL_TOKEN }}" > .env.prod
+          echo "NODE_ENV=production" >> .env.prod
+          
+      - name: Stop existing containers
+        run: |
+          docker-compose -f docker-compose.prod.yaml down || true
+          
+      - name: Build and deploy
+        run: |
+          docker-compose -f docker-compose.prod.yaml up -d --build
+          
+      - name: Clean up old images
+        run: |
+          docker system prune -f

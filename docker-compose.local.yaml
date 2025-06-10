@@ -1,0 +1,16 @@
+version: '3.8'
+
+services:
+  seanamoroso-dev:
+    build:
+      context: .
+      target: dev
+    ports:
+      - "3160:3000"
+    volumes:
+      - .:/app
+      - /app/node_modules
+    environment:
+      - NODE_ENV=development
+    env_file:
+      - .env.local
