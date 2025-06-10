@@ -21,6 +21,14 @@ jobs:
         run: |
           docker compose -f docker-compose.prod.yaml down || true
           
-      - name: Build and deploy
+      - name: 🔧 Pull or Build Images
         run: |
-          docker compose -f docker-compose.prod.yaml up -d --build
+          docker compose -f docker-compose.prod.yaml pull || true
+          docker compose -f docker-compose.prod.yaml build
+
+      - name: 🚀 Start Services
+        run: |
+          docker compose -f docker-compose.prod.yaml up -d
+
+      - name: ✅ Show Running Containers
+        run: docker ps
