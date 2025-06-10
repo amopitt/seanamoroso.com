@@ -19,11 +19,11 @@ jobs:
           
       - name: Stop existing containers
         run: |
-          docker-compose -f docker-compose.prod.yaml down || true
+          docker compose -f docker-compose.prod.yaml down || true
           
       - name: Build and deploy
         run: |
-          docker-compose -f docker-compose.prod.yaml up -d --build
+          docker compose -f docker-compose.prod.yaml up -d --build
           
       - name: Clean up old images
         run: |
