@@ -7,14 +7,14 @@ on:
 jobs:
   deploy:
     runs-on: self-hosted
-    
+    env:
+      TUNNEL_TOKEN: ${{ secrets.TUNNEL_TOKEN }}
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
         
       - name: Set up environment
         run: |
-          echo "TUNNEL_TOKEN=${{ secrets.TUNNEL_TOKEN }}" > .env.prod
           echo "NODE_ENV=production" >> .env.prod
           
       - name: Stop existing containers
