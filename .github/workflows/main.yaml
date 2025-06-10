@@ -24,7 +24,3 @@ jobs:
       - name: Build and deploy
         run: |
           docker compose -f docker-compose.prod.yaml up -d --build
-          
-      - name: Clean up old images
-        run: |
-          docker system prune -f
