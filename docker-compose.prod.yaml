@@ -2,6 +2,7 @@ version: '3.8'
 
 services:
   seanamoroso:
+    container_name: seanamoroso
     build:
       context: .
       target: prod
